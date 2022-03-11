@@ -1,0 +1,44 @@
+body,
+html,
+#root {
+  height: 100%;
+}
+
+html {
+  font-size: 18px;
+  color: white;
+  background-color: black;
+}
+
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+header {
+  background-color: black;
+  text-align: center;
+  width: 100%;
+  border-bottom: 3px solid #5b5b5b;
+  flex: 0 1 auto;
+}
+
+.logo {
+  margin: 10px auto;
+}
+
+main {
+  background-image: url('../../img/chain-on-dark-free-photos-1424424.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex: 1 1 auto;
+}
+
+footer {
+  font-size: small;
+  text-align: center;
+  padding: 4vh;
+  flex: 0 1 5vh;
+}

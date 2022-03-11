@@ -1,0 +1,47 @@
+.Incrementor {
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15rem;
+    background-color: rgb(91, 91, 91, 0.7);
+    
+    border-radius: 5px;
+}
+
+.flex-item {
+    opacity: 0.8;
+}
+
+.increment-button {
+    color: #9E5B13;
+    font-size: 4rem;
+    cursor: pointer;
+    flex: 0 0 auto;
+    padding: 0 10px;
+}
+
+.increment-value {
+    font-size: 2rem;
+}
+
+.increment-value input {
+    color: #9E5B13;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid #9E5B13;
+    width: 60px;
+    font-size: 2rem;
+    text-align: right;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin: 0; 
+}
+
+.increment-value label {
+    padding-left: 10px;
+}
+
+
+

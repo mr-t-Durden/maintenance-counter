@@ -2,18 +2,18 @@ import React, {useState} from "react";
 import './Incrementor.css';
 
 function Incrementor(props) {
-    const [currentIncrement, setCurrentIncrement] = useState(5); 
+    const [incrementValue, setIncrementValue] = useState(5); 
 
-    function handleIncrementChange() {
-
+    function handleIncrementChange({target}) {
+        setIncrementValue(target.value);
     }
 
     function handleIncrement() {
-
+        props.changeIntervalProgress(incrementValue);
     }
 
     function handleDecrement() {
-        
+        props.changeIntervalProgress(-incrementValue)
     }
 
     return (
@@ -24,8 +24,8 @@ function Incrementor(props) {
                     type="number" 
                     onChange={handleIncrementChange}
                     id="incrementInput" 
-                    placeholder={currentIncrement}
-                    value={currentIncrement}
+                    placeholder={incrementValue}
+                    value={incrementValue}
                 />
                 <label htmlFor="incrementInput">km</label>
             </div>

@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState} from 'react';
 import logo from '../../img/b40720e431d141939b3a39363b49659b.png';
 import Incrementor from '../incrementor/Incrementor';
+import MaintenanceIntervals from '../maintenanceintervals/MaintenanceIntervals';
 
 function App() {
   const [intervals, setIntervals] = useState([
@@ -29,7 +30,7 @@ function App() {
     setIntervals(
       intervals.filter(
         interval => interval.id !== intervalId
-      );
+      )
     );
   }
 
@@ -64,9 +65,14 @@ function App() {
         <img className="logo" src={logo} alt="Maintenance Counter logo" />
       </header>
       <main>
-        {/* <MaintenanceIntervals /> */}
         <Incrementor 
           changeIntervalProgress={changeActiveIntervalsProgress} 
+        />
+        <MaintenanceIntervals 
+          intervals={intervals}
+          resetIntervalProgress={resetIntervalProgress}
+          removeInterval={removeInterval}
+          toggleActive={toggleActive}
         />
       </main>
       <footer>

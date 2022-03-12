@@ -1,5 +1,6 @@
 import React from "react";
 import './MaintenanceIntervals.css';
+import MaintenanceBar from "../maintenancebar/MaintenanceBar";
 
 function MaintenanceIntervals(props) {
     return (
@@ -9,9 +10,9 @@ function MaintenanceIntervals(props) {
                     (interval) => {
                         return <MaintenanceBar 
                             interval={interval}
-                            onRemove={props.removeInterval}
-                            onClick={props.toggleActive}
-                            onDone={props.resetIntervalProgress}
+                            removeInterval={props.removeInterval}
+                            toggleActive={props.toggleActive}
+                            resetIntervalProgress={props.resetIntervalProgress}
                         />;
                     }
                 )

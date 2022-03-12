@@ -10,7 +10,7 @@ function MaintenanceIntervals(props) {
                         return <MaintenanceBar 
                             interval={interval}
                             onRemove={props.removeInterval}
-                            onClick={props.setIntervalActive}
+                            onClick={props.toggleActive}
                             onDone={props.resetIntervalProgress}
                         />;
                     }

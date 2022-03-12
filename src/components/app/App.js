@@ -25,6 +25,39 @@ function App() {
     );
   }
 
+  function removeInterval(intervalId) {
+    setIntervals(
+      intervals.filter(
+        interval => interval.id !== intervalId
+      );
+    );
+  }
+
+  function toggleActive(intervalId) {
+    setIntervals(
+      intervals.map(
+        (interval) => {
+          if(interval.id === intervalId) {
+            interval.active = !interval.active;
+          }  
+        }
+      )
+    );
+  }
+
+  function resetIntervalProgress(intervalId) {
+    setIntervals(
+      intervals.map(
+        (interval) => {
+          if(interval.id === intervalId) {
+            interval.currentValue = 0;
+          }  
+        }
+      )
+    );
+  }
+
+
   return (
     <div className='box'>
       <header>

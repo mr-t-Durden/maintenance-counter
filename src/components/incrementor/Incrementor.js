@@ -5,7 +5,7 @@ function Incrementor(props) {
     const [incrementValue, setIncrementValue] = useState(5); 
 
     function handleIncrementChange({target}) {
-        setIncrementValue(target.value);
+        setIncrementValue(parseInt(target.value));
     }
 
     function handleIncrement() {
@@ -18,7 +18,10 @@ function Incrementor(props) {
 
     return (
         <div className="Incrementor">
-            <p className="increment-button flex-item">-</p>
+            <p 
+                className="increment-button flex-item" 
+                onClick={handleDecrement}
+            >-</p>
             <div className="increment-value flex-item">
                 <input 
                     type="number" 
@@ -29,7 +32,10 @@ function Incrementor(props) {
                 />
                 <label htmlFor="incrementInput">km</label>
             </div>
-            <p className="increment-button flex-item">+</p>
+            <p 
+                className="increment-button flex-item" 
+                onClick={handleIncrement}
+            >+</p>
         </div>
     );
 }

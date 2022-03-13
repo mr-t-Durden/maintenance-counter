@@ -11,18 +11,20 @@ function App() {
       name: 'Oil bicycle chain',
       currentValue: 0,
       totalValue: 300,
-      active: true,
-      complete: false
+      active: true
     }
   ]);
 
   function changeActiveIntervalsProgress(changeValue) {
-    const activeIntervals = intervals.filter( 
-      interval => interval.active 
-    );
-
-    activeIntervals.forEach( 
-      interval => interval.currentValue += changeValue
+    setIntervals( 
+      intervals.map(
+        (interval) => {
+                if(interval.active) {
+                  interval.currentValue += changeValue;
+                }
+                return interval;  
+              }
+      )
     );
   }
 
@@ -35,13 +37,14 @@ function App() {
   }
 
   function toggleActive(intervalId) {
-    setIntervals(
+    setIntervals( 
       intervals.map(
         (interval) => {
-          if(interval.id === intervalId) {
-            interval.active = !interval.active;
-          }  
-        }
+            if(interval.id === intervalId) {
+              interval.active = !interval.active;
+            }
+            return interval;  
+          }
       )
     );
   }
@@ -53,6 +56,7 @@ function App() {
           if(interval.id === intervalId) {
             interval.currentValue = 0;
           }  
+          return interval;
         }
       )
     );

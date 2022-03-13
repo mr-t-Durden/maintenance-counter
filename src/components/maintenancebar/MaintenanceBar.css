@@ -16,7 +16,7 @@
     border-radius: 7px;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid #9E5B13;
+    /* border: 1px solid #9E5B13; */
     margin: 5px;
 }
 
@@ -48,6 +48,6 @@
 }
 
 .done-checkbox {
-    display: none;
+    /* display: none; */
     padding: 0 15px;
 }

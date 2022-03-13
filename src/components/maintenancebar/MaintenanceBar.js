@@ -1,29 +1,48 @@
-import { render } from "@testing-library/react";
-import React from "react";
-import { act } from "react-dom/test-utils";
+import React, {useState, useEffect} from "react";
 import './MaintenanceBar.css';
 
-const activeStyle = { border: '3px solid #6BD8FF' }
+const activeStyle = { border: '3px solid #6BD8FF' };
+const deactiveStyle = { border: '1px solid #9E5B13' };
+
+const incompleteStyle = { display: 'none' };
+const completeStyle = { display: 'block' };
 
 function MaintenanceBar(props) {
+    const [complete, setComplete] = useState(false);
+
+    function checkCompleteStatus(interval) {
+        return interval.currentValue >= interval.totalValue;
+    }
+
+    useEffect( () => {
+        setComplete( checkCompleteStatus(props.interval) );
+    } );
     
-    function handleProgressBarClick(e) {
+    function handleProgressBarClick() {
         props.toggleActive(props.interval.id);
     }
 
-    function renderActive() {
-        return props.interval.active ? activeStyle : {};
+    function handleDeleteClick() {
+        props.removeInterval(props.interval.id);
+    }
+
+    function handleDoneChecked() {
+        props.resetIntervalProgress(props.interval.id);
     }
 
     return (
         <div className="MaintenanceBar">
-            <div className="delete-button" title="Remove Interval">
+            <div 
+                className="delete-button" 
+                title="Remove Interval"
+                onClick={handleDeleteClick}
+            >
                 <p>x</p>
             </div>
             <div className="progress-bar" 
                 title="Activate/Deactivate Interval" 
                 onClick={handleProgressBarClick}
-                style={renderActive()}
+                style={props.interval.active ? activeStyle : deactiveStyle}
             >
                 <div className="progress">
                     <div className="progress-fill"></div>
@@ -35,8 +54,15 @@ function MaintenanceBar(props) {
                     </p>
                 </div>
             </div>
-            <div className="done-checkbox">
-                <input type="checkbox" value={props.interval.complete}/>
+            <div 
+                className="done-checkbox"
+                style={complete ? completeStyle : incompleteStyle}
+            >
+                <input 
+                    type="checkbox" 
+                    value={props.interval.complete}
+                    onClick={handleDoneChecked}
+                />
             </div>
         </div>
     );

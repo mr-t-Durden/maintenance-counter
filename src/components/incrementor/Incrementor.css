@@ -34,9 +34,6 @@
     width: 60px;
     font-size: 2rem;
     text-align: right;
-    -moz-appearance: textfield;
-    appearance: textfield;
-    margin: 0; 
 }
 
 .increment-value label {

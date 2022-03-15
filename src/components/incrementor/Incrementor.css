@@ -5,9 +5,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 15rem;
+    width: 20rem;
     background-color: rgb(91, 91, 91, 0.7);
-    
     border-radius: 5px;
 }
 
@@ -31,7 +30,7 @@
     color: #9E5B13;
     background-color: rgba(0,0,0,0);
     border: 1px solid #9E5B13;
-    width: 60px;
+    width: 80px;
     font-size: 2rem;
     text-align: right;
 }

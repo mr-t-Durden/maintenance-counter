@@ -1,13 +1,15 @@
 import './App.css';
 import React, {useState} from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import logo from '../../img/b40720e431d141939b3a39363b49659b.png';
 import Incrementor from '../incrementor/Incrementor';
 import MaintenanceIntervals from '../maintenanceintervals/MaintenanceIntervals';
+import AddInterval from '../addinterval/AddInterval';
 
 function App() {
   const [intervals, setIntervals] = useState([
     {
-      id: 1,
+      id: uuidv4(),
       name: 'Oil bicycle chain',
       currentValue: 0,
       totalValue: 300,
@@ -21,7 +23,6 @@ function App() {
         (interval) => {
                 if(interval.active) {
                   if((interval.currentValue + changeValue) < 0){
-                    console.log('negative Progress!');
                     interval.currentValue = 0;
                   } else {
                     interval.currentValue += changeValue;
@@ -67,6 +68,11 @@ function App() {
     );
   }
 
+  function addInterval(newInterval) {
+    newInterval.id = uuidv4();
+    intervals.push(newInterval);
+  }
+
 
   return (
     <div className='box'>
@@ -77,15 +83,20 @@ function App() {
         <Incrementor 
           changeIntervalProgress={changeActiveIntervalsProgress} 
         />
-        <MaintenanceIntervals 
-          intervals={intervals}
-          resetIntervalProgress={resetIntervalProgress}
-          removeInterval={removeInterval}
-          toggleActive={toggleActive}
-        />
+        <div className='intervals-area'>
+          <MaintenanceIntervals 
+            intervals={intervals}
+            resetIntervalProgress={resetIntervalProgress}
+            removeInterval={removeInterval}
+            toggleActive={toggleActive}
+          />
+          <AddInterval 
+            addInterval={addInterval}
+          />
+        </div>
       </main>
       <footer>
-        Impressum ...
+        <p>Impressum ...</p>
       </footer>
     </div>
   );

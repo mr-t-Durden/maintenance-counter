@@ -1,0 +1,46 @@
+.AddInterval {
+    text-align: center;
+    display: inline-block;
+    margin: 5px auto;
+    color: #EB9E4B;
+}
+
+.AddInterval form {
+    border: 2px solid #9E5B13;
+    border-radius: 5px;
+    text-align: center;
+    padding: 0 10px;
+    display: none;
+}
+
+.AddInterval h2 {
+    margin: 10px;
+    font-weight: bold;
+}
+
+.form-item {
+    text-align: left;
+    display: flex;
+    margin: auto;
+    align-items: space-between;
+    margin: 5px;
+}
+
+.form-item label {
+    width: 50%;
+    padding: 0 3px;
+}
+
+.form-item input {
+    width: 50%;
+}
+
+form input[type*='submit'] {
+    margin: 15px;
+    font-size: 1.2rem;
+    background-color: rgba(0,0,0,0);
+    color: #EB9E4B;
+    border: 3px solid #EB9E4B;
+    border-radius: 3px;
+    cursor: pointer;    
+}

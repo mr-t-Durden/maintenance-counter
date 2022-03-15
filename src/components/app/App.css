@@ -43,3 +43,11 @@ footer {
   padding: 4vh;
   flex: 0 1 5vh;
 }
+
+.intervals-area {
+    margin: 20px;
+    border: 2px solid #d3d3d3;
+    background-color: rgb(91, 91, 91, 0.7);
+    text-align: center;
+    padding-bottom: 15px;
+}

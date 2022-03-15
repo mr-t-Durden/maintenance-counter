@@ -20,7 +20,12 @@ function App() {
       intervals.map(
         (interval) => {
                 if(interval.active) {
-                  interval.currentValue += changeValue;
+                  if((interval.currentValue + changeValue) < 0){
+                    console.log('negative Progress!');
+                    interval.currentValue = 0;
+                  } else {
+                    interval.currentValue += changeValue;
+                  }
                 }
                 return interval;  
               }

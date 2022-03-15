@@ -14,8 +14,23 @@ function MaintenanceBar(props) {
         return interval.currentValue >= interval.totalValue;
     }
 
+    function updateProgressBar() {
+        const currentMaintenanceBar = document.getElementById(props.interval.id);
+        const currentProgressFill = currentMaintenanceBar.querySelector('.progress-bar').querySelector('.progress-fill');
+        const currentPercentage = (props.interval.currentValue/props.interval.totalValue)*100;
+        
+        currentProgressFill.style.width = `${currentPercentage}%`;
+        
+        if( complete ) {
+            currentProgressFill.style.backgroundColor = '#EB9E4B';
+        } else {
+            currentProgressFill.style.backgroundColor = '#237D9E';
+        }
+    }
+
     useEffect( () => {
         setComplete( checkCompleteStatus(props.interval) );
+        updateProgressBar();
     } );
     
     function handleProgressBarClick() {
@@ -31,7 +46,7 @@ function MaintenanceBar(props) {
     }
 
     return (
-        <div className="MaintenanceBar">
+        <div className="MaintenanceBar" id={props.interval.id}>
             <div 
                 className="delete-button" 
                 title="Remove Interval"

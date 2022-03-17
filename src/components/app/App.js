@@ -68,9 +68,16 @@ function App() {
     );
   }
 
-  function addInterval(newInterval) {
-    newInterval.id = uuidv4();
-    intervals.push(newInterval);
+  function addInterval(newName, newTotal) {
+    const newInterval = {
+      id: uuidv4(),
+      name: newName,
+      currentValue: 0,
+      totalValue: newTotal,
+      active: true
+    }
+
+    setIntervals( (prevIntervals) => {return [...prevIntervals, newInterval]});
   }
 
 

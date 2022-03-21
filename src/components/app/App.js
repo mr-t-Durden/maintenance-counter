@@ -1,21 +1,26 @@
 import './App.css';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import logo from '../../img/b40720e431d141939b3a39363b49659b.png';
 import Incrementor from '../incrementor/Incrementor';
 import MaintenanceIntervals from '../maintenanceintervals/MaintenanceIntervals';
 import AddInterval from '../addinterval/AddInterval';
+import Storage from '../../util/LocalStorage';
+
+const exampleIntervals = [
+  {
+    id: uuidv4(),
+    name: 'Oil bicycle chain',
+    currentValue: 0,
+    totalValue: 300,
+    active: true
+  }
+];
 
 function App() {
-  const [intervals, setIntervals] = useState([
-    {
-      id: uuidv4(),
-      name: 'Oil bicycle chain',
-      currentValue: 0,
-      totalValue: 300,
-      active: true
-    }
-  ]);
+  const [intervals, setIntervals] = useState( () => {
+    return Storage.loadIntervals() || exampleIntervals;
+  });
 
   function changeActiveIntervalsProgress(changeValue) {
     setIntervals( 
@@ -80,6 +85,9 @@ function App() {
     setIntervals( (prevIntervals) => {return [...prevIntervals, newInterval]});
   }
 
+  useEffect( ()  => {
+    Storage.saveIntervals(intervals);
+  }, [intervals]);
 
   return (
     <div className='box'>

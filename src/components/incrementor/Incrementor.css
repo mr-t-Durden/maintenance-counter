@@ -15,7 +15,7 @@
 }
 
 .increment-button {
-    color: #9E5B13;
+    color: #EB9E4B;
     font-size: 4rem;
     cursor: pointer;
     flex: 0 0 auto;
@@ -24,20 +24,38 @@
 
 .increment-value {
     font-size: 2rem;
+    color: #EB9E4B;
 }
 
 .increment-value input {
-    color: #9E5B13;
+    color: #EB9E4B;
     background-color: rgba(0,0,0,0);
-    border: 1px solid #9E5B13;
+    border: 1px solid #EB9E4B;
     width: 80px;
     font-size: 2rem;
     text-align: right;
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+}
+
+.increment-value input:focus {
+    border: 1px solid #6BD8FF !important;
+    box-shadow: 0 0 3px #6BD8FF !important;
+    -moz-box-shadow: 0 0 3px #6BD8FF !important;
+    -webkit-box-shadow: 0 0 3px #6BD8FF !important;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline-offset: 0px !important;
+    outline: none !important;
 }
 
 .increment-value label {
     padding-left: 10px;
 }
 
-
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

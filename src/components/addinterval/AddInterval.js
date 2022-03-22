@@ -26,6 +26,7 @@ function AddInterval(props) {
 
     function handleAddButtonClick() {
         setOpen((prev) => {return !prev});
+        
     }
 
     function handleNewNameInputChange({target}) {

@@ -7,7 +7,7 @@ import MaintenanceIntervals from '../maintenanceintervals/MaintenanceIntervals';
 import AddInterval from '../addinterval/AddInterval';
 import Storage from '../../util/LocalStorage';
 
-const exampleIntervals = [
+const defaultIntervals = [
   {
     id: uuidv4(),
     name: 'Oil bicycle chain',
@@ -19,8 +19,9 @@ const exampleIntervals = [
 
 function App() {
   const [intervals, setIntervals] = useState( () => {
-    return Storage.loadIntervals() || exampleIntervals;
+    return Storage.loadIntervals() || defaultIntervals;
   });
+  const [progressChange, setProgressChange] = useState(0);
 
   function changeActiveIntervalsProgress(changeValue) {
     setIntervals( 
@@ -48,6 +49,8 @@ function App() {
   }
 
   function toggleActive(intervalId) {
+    if ( progressChange ) return;
+
     setIntervals( 
       intervals.map(
         (interval) => {
@@ -58,6 +61,7 @@ function App() {
           }
       )
     );
+
   }
 
   function resetIntervalProgress(intervalId) {
@@ -85,9 +89,23 @@ function App() {
     setIntervals( (prevIntervals) => {return [...prevIntervals, newInterval]});
   }
 
+  function changeProgressChange(changeValue) {
+    setProgressChange((prevChange) => {
+      return  prevChange + changeValue;
+    });
+  }
+
   useEffect( ()  => {
     Storage.saveIntervals(intervals);
   }, [intervals]);
+
+  useEffect( () => {
+    const showChangeTimeout = setTimeout(() => {
+      changeActiveIntervalsProgress(progressChange);
+      setProgressChange(0);
+    }, 3000)
+    return () => clearTimeout(showChangeTimeout);
+  }, [progressChange]);
 
   return (
     <div className='box'>
@@ -96,11 +114,12 @@ function App() {
       </header>
       <main>
         <Incrementor 
-          changeIntervalProgress={changeActiveIntervalsProgress} 
+          changeIntervalProgress={changeProgressChange} 
         />
         <div className='intervals-area'>
           <MaintenanceIntervals 
             intervals={intervals}
+            progressChange={progressChange}
             resetIntervalProgress={resetIntervalProgress}
             removeInterval={removeInterval}
             toggleActive={toggleActive}

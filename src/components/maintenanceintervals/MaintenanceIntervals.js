@@ -9,6 +9,7 @@ function MaintenanceIntervals(props) {
                     (interval) => {
                         return <MaintenanceBar 
                             interval={interval}
+                            progressChange={props.progressChange}
                             removeInterval={props.removeInterval}
                             toggleActive={props.toggleActive}
                             resetIntervalProgress={props.resetIntervalProgress}

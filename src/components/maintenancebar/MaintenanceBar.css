@@ -27,9 +27,10 @@
 }
 
 .progress-fill {
-    width: 50%;
+    width: 0%;
     height: 100%;
     background-color: rgba(35, 125, 158, 1);
+    transition: 2s;
 }
 
 .progress-change {
@@ -38,8 +39,6 @@
     background-color: #4BC1EB;
     z-index: 1;
 }
-
-
 
 .interval-name {
     position: absolute;

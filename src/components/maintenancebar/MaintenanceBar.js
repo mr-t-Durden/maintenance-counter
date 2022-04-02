@@ -56,7 +56,6 @@ function MaintenanceBar(props) {
         currentProgressChange.style.width = '0';
         currentProgressChange.style.left = '0';
 
-        console.log(`Update Progress Bar change (${currentChangePercentage})`);
         if (currentChangePercentage < 0) {
             currentProgressChange.style.width = `${-currentChangePercentage}%`;
             currentProgressChange.style.left = `${currentChangePercentage}%`;
@@ -64,7 +63,7 @@ function MaintenanceBar(props) {
         } else if (currentChangePercentage > 0) {
             currentProgressChange.style.width = `${currentChangePercentage}%`;
             currentProgressChange.style.borderLeft = '2px solid #EB9E4B';
-        }
+        } 
     }
 
     function getChangeValueString(changeValue) {

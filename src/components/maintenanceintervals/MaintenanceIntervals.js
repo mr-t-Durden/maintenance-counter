@@ -6,8 +6,9 @@ function MaintenanceIntervals(props) {
         <div className="MaintenanceIntervals">
             {
                 props.intervals.map(
-                    (interval) => {
+                    (interval, i) => {
                         return <MaintenanceBar 
+                            key={i}
                             interval={interval}
                             progressChange={props.progressChange}
                             removeInterval={props.removeInterval}

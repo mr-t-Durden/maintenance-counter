@@ -64,3 +64,18 @@
 .done-checkbox {
     padding: 0 15px;
 }
+
+@media only screen and (max-width: 480px) {
+    .MaintenanceBar {
+        /* font-size: 0.9rem; */
+        height: 70px;
+    }
+    
+    .interval-name {
+        top: 25%;
+    }
+
+    .progress-number {
+        top: 75%;
+    }
+}

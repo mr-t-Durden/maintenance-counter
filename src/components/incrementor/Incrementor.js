@@ -5,7 +5,13 @@ function Incrementor(props) {
     const [incrementValue, setIncrementValue] = useState(5); 
 
     function handleIncrementChange({target}) {
-        setIncrementValue(parseInt(target.value));
+        if ( !target.value.match(/\d+/) ) {
+            setIncrementValue(0);
+        } else {
+            const incrementNumber = parseInt(target.value);
+            setIncrementValue(incrementNumber);
+            target.value=incrementNumber;
+        }
     }
 
     function handleIncrement() {

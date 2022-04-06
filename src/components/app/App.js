@@ -6,6 +6,8 @@ import Incrementor from '../incrementor/Incrementor';
 import MaintenanceIntervals from '../maintenanceintervals/MaintenanceIntervals';
 import AddInterval from '../addinterval/AddInterval';
 import Storage from '../../util/LocalStorage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const defaultIntervals = [
   {
@@ -22,6 +24,16 @@ function App() {
     return Storage.loadIntervals() || defaultIntervals;
   });
   const [progressChange, setProgressChange] = useState(0);
+
+  const raiseBlockingHint = () => toast.info(<p>Deactivation/Activation of intervals blocked! <br /> Wait a moment! </p>, {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: false,
+    progress: undefined,
+    });
 
   function changeActiveIntervalsProgress(changeValue) {
     setIntervals( 
@@ -49,7 +61,10 @@ function App() {
   }
 
   function toggleActive(intervalId) {
-    if ( progressChange ) return;
+    if ( progressChange ) {
+      raiseBlockingHint(); 
+      return;
+    }
 
     setIntervals( 
       intervals.map(
@@ -109,6 +124,7 @@ function App() {
 
   return (
     <div className='box'>
+      <ToastContainer />
       <header>
         <img className="logo" src={logo} alt="Maintenance Counter logo" />
       </header>

@@ -81,6 +81,7 @@ function AddInterval(props) {
                         value={newName}
                         onChange={handleNewNameInputChange}
                         pattern="\w+"
+                        title="name of the new Interval (non-empty string)"
                     />
                 </div>
                 <div className="form-item">
@@ -91,6 +92,7 @@ function AddInterval(props) {
                         value={newTotal}
                         onChange={handleNewTotalInputChange}
                         pattern='[1-9]{1}|\d{2,}'
+                        title="total amount of km for the new interval (non-zero, positive integer)"
                     />
                 </div>
                 <input type="submit" title='Add new Interval' value='Add'/>

@@ -35,6 +35,7 @@ function Incrementor(props) {
                     id="incrementInput" 
                     placeholder={incrementValue}
                     value={incrementValue}
+                    title="value to increment/decrement active intervals progress (positive integer)"
                 />
                 <label htmlFor="incrementInput">km</label>
             </div>

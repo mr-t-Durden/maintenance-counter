@@ -57,6 +57,8 @@ function AddInterval(props) {
         }
         props.addInterval(newName, newTotal);
         setOpen(false);
+        setNewName('');
+        setNewTotal(0);
     }
     
     return (

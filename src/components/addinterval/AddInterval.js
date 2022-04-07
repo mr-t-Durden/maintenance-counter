@@ -6,7 +6,7 @@ import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import
 const addButtonStyle = {
     color: '#EB9E4B',
     fontSize: '2rem',
-    margin: '5px',
+    margin: '5px auto',
     cursor: 'pointer'
 };
 
@@ -15,18 +15,31 @@ function AddInterval(props) {
     const [ newName, setNewName ] = useState('');
     const [ newTotal, setNewTotal ] = useState(0);
 
+    function toogleAddIntervalButton() {
+        const addButton = document.getElementById('plusButton')
+    }
+
     useEffect( ()  => {
         const addIntervalForm = document.getElementsByClassName('AddInterval')[0].querySelector('form');
+        const plusButton = document.getElementById('plusButton');
+        const upButton = document.getElementById('upButton');
         if (open) {
             addIntervalForm.style.display = 'block';
+            plusButton.style.display = 'none';
+            upButton.style.display = 'block';
         } else {
             addIntervalForm.style.display = 'none';
+            plusButton.style.display = 'block';
+            upButton.style.display = 'none';
         }
     }, [open]);
 
     function handleAddButtonClick() {
-        setOpen((prev) => {return !prev});
-        
+        setOpen(true);
+    }
+
+    function handleUpButtonClick() {
+        setOpen(false);
     }
 
     function handleNewNameInputChange({target}) {
@@ -67,9 +80,17 @@ function AddInterval(props) {
                 id="plusButton"
                 icon={solid('circle-plus')} 
                 size='3x' 
-                style={addButtonStyle}
+                style={{...addButtonStyle, display: 'block'}}
                 title='Add new Interval'
                 onClick={handleAddButtonClick}
+            />
+            <FontAwesomeIcon 
+                id='upButton'
+                icon={solid('circle-chevron-up')}
+                size="3x"
+                style={{...addButtonStyle, display: 'none'}}
+                title="close add interval form"
+                onClick={handleUpButtonClick}
             />
             <form onSubmit={handleNewIntervalFormSubmit}>
                 <h2 className="form-header">New Interval</h2>

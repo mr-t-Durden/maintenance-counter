@@ -25,7 +25,7 @@ function App() {
   });
   const [progressChange, setProgressChange] = useState(0);
 
-  const raiseBlockingHint = () => toast.info(<p>Deactivation/Activation of intervals blocked! <br /> Wait a moment! </p>, {
+  const raiseBlockingHint = () => toast.info(<p> Deactivation/Activation of intervals blocked! <br /> Wait a moment! </p>, {
     position: "bottom-center",
     autoClose: 3000,
     hideProgressBar: true,
@@ -34,6 +34,16 @@ function App() {
     draggable: false,
     progress: undefined,
     });
+
+    const raiseErrorHint = (message) => toast.error(message, {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      });
 
   function changeActiveIntervalsProgress(changeValue) {
     setIntervals( 
@@ -110,6 +120,10 @@ function App() {
     });
   }
 
+  function raiseErrorToast(message) {
+    raiseErrorHint(message);
+  }
+
   useEffect( ()  => {
     Storage.saveIntervals(intervals);
   }, [intervals]);
@@ -142,6 +156,7 @@ function App() {
           />
           <AddInterval 
             addInterval={addInterval}
+            raiseErrorToast={raiseErrorToast}
           />
         </div>
       </main>

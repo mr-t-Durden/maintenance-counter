@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import './AddInterval.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const addButtonStyle = {
     color: '#EB9E4B',
@@ -16,26 +14,6 @@ function AddInterval(props) {
     const [open, setOpen] = useState(false);
     const [ newName, setNewName ] = useState('');
     const [ newTotal, setNewTotal ] = useState(0);
-
-    const raiseTotalInputError = () => toast.error(<p>Interval total error! <br/> Interval total must a non-zero intege! </p>, {
-        position: "bottom-center",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: false,
-        progress: undefined,
-        });
-
-    const raiseNameInputError = () => toast.error(<p>Name input error! <br/> interval name must be a non-empty string! </p>, {
-            position: "bottom-center",
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: false,
-            progress: undefined,
-            });
 
     useEffect( ()  => {
         const addIntervalForm = document.getElementsByClassName('AddInterval')[0].querySelector('form');
@@ -69,12 +47,12 @@ function AddInterval(props) {
 
     function handleNewIntervalFormSubmit(event) {
         event.preventDefault();
-        if( newTotal === 0 ) {
-            raiseTotalInputError();
+        if( newName === '' ) {
+            props.raiseErrorToast(<p>Name input error! <br/> interval name must be a non-empty string! </p>);
             return;
         }
-        if( newName === '' ) {
-            raiseNameInputError();
+        if( newTotal === 0 ) {
+            props.raiseErrorToast(<p>Interval total error! <br/> Interval total must a non-zero intege! </p>);
             return;
         }
         props.addInterval(newName, newTotal);
@@ -115,7 +93,6 @@ function AddInterval(props) {
                 </div>
                 <input type="submit" title='Add new Interval' value='Add'/>
             </form>
-            <ToastContainer />
         </div>
     );
 }

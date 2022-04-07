@@ -1,11 +1,19 @@
 import React, {useState, useEffect} from "react";
 import './MaintenanceBar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 
 const activeStyle = { border: '3px solid #6BD8FF' };
 const deactiveStyle = { border: '1px solid #9E5B13' };
 
 const incompleteStyle = { display: 'none' };
 const completeStyle = { display: 'block' };
+
+const buttonStyle = {
+    color: '#EB9E4B',
+    margin: '5px auto',
+    cursor: 'pointer'
+};
 
 function MaintenanceBar(props) {
     const [complete, setComplete] = useState(false);
@@ -95,8 +103,16 @@ function MaintenanceBar(props) {
         props.removeInterval(props.interval.id);
     }
 
-    function handleDoneChecked() {
+    function handleDoneClick(target) {
         props.resetIntervalProgress(props.interval.id);
+        // setTimeout( 
+        //     () => {setComplete(false)},
+        //     3000
+        //  )
+        //  checkCompleteStatus(props.interval)
+        // console.log(document.getElementById('done-checkbox').checked);
+        // document.getElementById('done-checkbox').checked = false;
+        // console.log(document.getElementById('done-checkbox').checked);
     }
 
     return (
@@ -126,15 +142,24 @@ function MaintenanceBar(props) {
                     )}
                 </div>
             </div>
-            <div 
-                className="done-checkbox"
+            <div   
+                className="div-checkbox"
                 style={complete ? completeStyle : incompleteStyle}
             >
-                <input 
+                {/* <input 
+                    id="done-checkbox"
                     type="checkbox" 
-                    value={props.interval.complete}
+                    // value={props.interval.complete}
                     onClick={handleDoneChecked}
-                />
+                /> */}
+                <FontAwesomeIcon 
+                id='checkButton'
+                icon={solid('square-check')}
+                size="1x"
+                style={buttonStyle}
+                title="reset interval progress"
+                onClick={handleDoneClick}
+            />
             </div>
         </div>
     );

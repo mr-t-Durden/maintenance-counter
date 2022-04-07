@@ -3,9 +3,8 @@ import './AddInterval.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 
-const addButtonStyle = {
+const buttonStyle = {
     color: '#EB9E4B',
-    fontSize: '2rem',
     margin: '5px auto',
     cursor: 'pointer'
 };
@@ -79,16 +78,16 @@ function AddInterval(props) {
             <FontAwesomeIcon 
                 id="plusButton"
                 icon={solid('circle-plus')} 
-                size='3x' 
-                style={{...addButtonStyle, display: 'block'}}
+                size='2x' 
+                style={{...buttonStyle, display: 'block'}}
                 title='Add new Interval'
                 onClick={handleAddButtonClick}
             />
             <FontAwesomeIcon 
                 id='upButton'
                 icon={solid('circle-chevron-up')}
-                size="3x"
-                style={{...addButtonStyle, display: 'none'}}
+                size="2x"
+                style={{...buttonStyle, display: 'none'}}
                 title="close add interval form"
                 onClick={handleUpButtonClick}
             />

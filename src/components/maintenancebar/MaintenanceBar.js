@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from "react";
+
 import './MaintenanceBar.css';
+import '../general.css'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 
@@ -99,18 +102,10 @@ function MaintenanceBar(props) {
 
     function handleDoneClick(target) {
         props.resetIntervalProgress(props.interval.id);
-        // setTimeout( 
-        //     () => {setComplete(false)},
-        //     3000
-        //  )
-        //  checkCompleteStatus(props.interval)
-        // console.log(document.getElementById('done-checkbox').checked);
-        // document.getElementById('done-checkbox').checked = false;
-        // console.log(document.getElementById('done-checkbox').checked);
     }
 
     return (
-        <div className="MaintenanceBar" id={props.interval.id}>
+        <div className={`MaintenanceBar${props.new ? ' inserting' : ''}`} id={props.interval.id}>
             <div 
                 className="delete-button" 
                 title="Remove Interval"
@@ -140,12 +135,6 @@ function MaintenanceBar(props) {
                 className="div-checkbox"
                 style={complete ? completeStyle : incompleteStyle}
             >
-                {/* <input 
-                    id="done-checkbox"
-                    type="checkbox" 
-                    // value={props.interval.complete}
-                    onClick={handleDoneChecked}
-                /> */}
                 <FontAwesomeIcon 
                 id='checkButton'
                 className="button"

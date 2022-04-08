@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import logo from '../../img/b40720e431d141939b3a39363b49659b.png';
 import Incrementor from '../incrementor/Incrementor';
@@ -24,6 +24,7 @@ function App() {
     return Storage.loadIntervals() || defaultIntervals;
   });
   const [progressChange, setProgressChange] = useState(0);
+  const newIntervalKey = useRef(undefined);
 
   const raiseBlockingHint = () => toast.info(<p> Deactivation/Activation of intervals blocked! <br /> Wait a moment! </p>, {
     position: "bottom-center",
@@ -111,6 +112,7 @@ function App() {
       active: true
     }
 
+    newIntervalKey.current = intervals.length;
     setIntervals( (prevIntervals) => {return [...prevIntervals, newInterval]});
   }
 
@@ -153,6 +155,7 @@ function App() {
             resetIntervalProgress={resetIntervalProgress}
             removeInterval={removeInterval}
             toggleActive={toggleActive}
+            newIntervalKey={newIntervalKey.current}
           />
           <AddInterval 
             addInterval={addInterval}

@@ -14,6 +14,7 @@ function MaintenanceIntervals(props) {
                             removeInterval={props.removeInterval}
                             toggleActive={props.toggleActive}
                             resetIntervalProgress={props.resetIntervalProgress}
+                            new={i === props.newIntervalKey}
                         />;
                     }
                 )

@@ -27,6 +27,7 @@ function Incrementor(props) {
             <p 
                 className="increment-button flex-item" 
                 onClick={handleDecrement}
+                title="decrement active intervals"
             >-</p>
             <div className="increment-value flex-item">
                 <input 
@@ -42,6 +43,7 @@ function Incrementor(props) {
             <p 
                 className="increment-button flex-item" 
                 onClick={handleIncrement}
+                title="increment active intervals"
             >+</p>
         </div>
     );

@@ -42,7 +42,7 @@ function AddInterval(props) {
     }
 
     function handleNewNameInputChange({target}) {
-        if ( !target.value.match(/\w+/) ) {
+        if ( !target.value.match(/[\w\s]+/) ) {
             setNewName('');
         } else {
             setNewName(target.value);
@@ -100,7 +100,7 @@ function AddInterval(props) {
                         type="text"
                         value={newName}
                         onChange={handleNewNameInputChange}
-                        pattern="\w+"
+                        pattern="[\w\s]+"
                         title="name of the new Interval (non-empty string)"
                     />
                 </div>

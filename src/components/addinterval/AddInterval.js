@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
-import './AddInterval.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 
-const buttonStyle = {
-    color: '#EB9E4B',
-    margin: '5px auto',
-    cursor: 'pointer'
-};
+import './AddInterval.css';
+import '../general.css';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'; // <-- import styles to be used
 
 function AddInterval(props) {
     const [open, setOpen] = useState(false);
     const [ newName, setNewName ] = useState('');
     const [ newTotal, setNewTotal ] = useState(0);
-
-    function toogleAddIntervalButton() {
-        const addButton = document.getElementById('plusButton')
-    }
 
     useEffect( ()  => {
         const addIntervalForm = document.getElementsByClassName('AddInterval')[0].querySelector('form');
@@ -77,17 +70,19 @@ function AddInterval(props) {
         <div className="AddInterval">
             <FontAwesomeIcon 
                 id="plusButton"
+                className="button"
                 icon={solid('circle-plus')} 
                 size='2x' 
-                style={{...buttonStyle, display: 'block'}}
+                style={{display: 'block'}}
                 title='Add new Interval'
                 onClick={handleAddButtonClick}
             />
             <FontAwesomeIcon 
                 id='upButton'
+                className="button"
                 icon={solid('circle-chevron-up')}
                 size="2x"
-                style={{...buttonStyle, display: 'none'}}
+                style={{display: 'none'}}
                 title="close add interval form"
                 onClick={handleUpButtonClick}
             />
@@ -115,7 +110,7 @@ function AddInterval(props) {
                         title="total amount of km for the new interval (non-zero, positive integer)"
                     />
                 </div>
-                <input type="submit" title='Add new Interval' value='Add'/>
+                <input type="submit" title='Add new Interval' value='Add' className="submit-button"/>
             </form>
         </div>
     );

@@ -9,12 +9,6 @@ const deactiveStyle = { border: '1px solid #9E5B13' };
 const incompleteStyle = { display: 'none' };
 const completeStyle = { display: 'block' };
 
-const buttonStyle = {
-    color: '#EB9E4B',
-    margin: '5px auto',
-    cursor: 'pointer'
-};
-
 function MaintenanceBar(props) {
     const [complete, setComplete] = useState(false);
     const [specificProgressChange, setSpecificProgressChange] = useState( () => {
@@ -154,9 +148,9 @@ function MaintenanceBar(props) {
                 /> */}
                 <FontAwesomeIcon 
                 id='checkButton'
+                className="button"
                 icon={solid('square-check')}
                 size="1x"
-                style={buttonStyle}
                 title="reset interval progress"
                 onClick={handleDoneClick}
             />

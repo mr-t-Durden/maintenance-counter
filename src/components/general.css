@@ -1,0 +1,14 @@
+.button {
+    color: #EB9E4B;
+    margin: 5px auto;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: #9E5B13;
+    border-radius: 100%;
+}
+
+.button:active {
+    transform: scale(1.1);
+}

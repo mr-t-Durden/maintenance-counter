@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './Incrementor.css';
+import '../general.css';
 
 function Incrementor(props) {
     const [incrementValue, setIncrementValue] = useState(5); 
@@ -25,7 +26,7 @@ function Incrementor(props) {
     return (
         <div className="Incrementor">
             <p 
-                className="increment-button flex-item" 
+                className="increment-button flex-item button" 
                 onClick={handleDecrement}
                 title="decrement active intervals"
             >-</p>
@@ -41,7 +42,7 @@ function Incrementor(props) {
                 <label htmlFor="incrementInput">km</label>
             </div>
             <p 
-                className="increment-button flex-item" 
+                className="increment-button flex-item button" 
                 onClick={handleIncrement}
                 title="increment active intervals"
             >+</p>

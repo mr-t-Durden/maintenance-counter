@@ -19,6 +19,10 @@
     margin: 5px;
 }
 
+.progress-bar:hover {
+    box-shadow: 0 0 5px white;
+}
+
 .progress {
     position: relative;
     width: 100%;

@@ -25,3 +25,17 @@
         transform: scale(1);
     }
 }
+
+.show-up {
+    animation: show-up 300ms forwards;
+    transform-origin: top center;
+}
+
+@keyframes show-up {
+    0% {
+        transform: scaleY(0.1);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}

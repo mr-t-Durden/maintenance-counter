@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import './AddInterval.css';
 import '../general.css';
@@ -10,24 +10,27 @@ function AddInterval(props) {
     const [open, setOpen] = useState(false);
     const [ newName, setNewName ] = useState('');
     const [ newTotal, setNewTotal ] = useState(0);
+    const addIntervalForm = useRef();
 
     useEffect( ()  => {
-        const addIntervalForm = document.getElementsByClassName('AddInterval')[0].querySelector('form');
         const plusButton = document.getElementById('plusButton');
         const upButton = document.getElementById('upButton');
         if (open) {
-            addIntervalForm.style.display = 'block';
+            addIntervalForm.current.style.display = 'block';
             plusButton.style.display = 'none';
             upButton.style.display = 'block';
         } else {
-            addIntervalForm.style.display = 'none';
+            addIntervalForm.current.style.display = 'none';
             plusButton.style.display = 'block';
             upButton.style.display = 'none';
         }
     }, [open]);
 
     function handleAddButtonClick() {
-        setOpen(true);
+        if( !open ) {
+            addIntervalForm.current.classList.add('show-up')
+            setOpen(true);
+        }
     }
 
     function handleUpButtonClick() {
@@ -86,7 +89,10 @@ function AddInterval(props) {
                 title="close add interval form"
                 onClick={handleUpButtonClick}
             />
-            <form onSubmit={handleNewIntervalFormSubmit}>
+            <form 
+                onSubmit={handleNewIntervalFormSubmit}
+                ref={addIntervalForm}
+            >
                 <h2 className="form-header">New Interval</h2>
                 <div className="form-item">
                     <label htmlFor="newName">name:</label>

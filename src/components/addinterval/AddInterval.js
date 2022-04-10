@@ -11,26 +11,31 @@ function AddInterval(props) {
     const [ newName, setNewName ] = useState('');
     const [ newTotal, setNewTotal ] = useState(0);
     const addIntervalForm = useRef();
+    const firstRender = useRef(true);
 
     useEffect( ()  => {
         const plusButton = document.getElementById('plusButton');
         const upButton = document.getElementById('upButton');
-        if (open) {
-            addIntervalForm.current.style.display = 'block';
-            plusButton.style.display = 'none';
-            upButton.style.display = 'block';
+        if (firstRender.current) {
+            firstRender.current = false;
         } else {
-            addIntervalForm.current.style.display = 'none';
-            plusButton.style.display = 'block';
-            upButton.style.display = 'none';
+            addIntervalForm.current.style.display = 'block'
+            if (open) {
+                addIntervalForm.current.classList.remove('hide-in');
+                addIntervalForm.current.classList.add('show-up');
+                plusButton.style.display = 'none';
+                upButton.style.display = 'block';
+            } else {
+                addIntervalForm.current.classList.remove('show-up');
+                addIntervalForm.current.classList.add('hide-in');
+                plusButton.style.display = 'block';
+                upButton.style.display = 'none';
+            }
         }
     }, [open]);
 
     function handleAddButtonClick() {
-        if( !open ) {
-            addIntervalForm.current.classList.add('show-up')
-            setOpen(true);
-        }
+        setOpen(true);
     }
 
     function handleUpButtonClick() {

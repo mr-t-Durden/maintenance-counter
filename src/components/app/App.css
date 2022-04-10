@@ -50,4 +50,6 @@ footer {
     background-color: rgb(91, 91, 91, 0.7);
     text-align: center;
     padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }

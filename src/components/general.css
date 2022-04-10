@@ -33,9 +33,40 @@
 
 @keyframes show-up {
     0% {
-        transform: scaleY(0.1);
+        visibility: hidden;
+        height: 0;
+        transform: scaleY(0.05);
+    }
+    2% {
+        visibility: visible;
+        transform: scaleY(0.05);
     }
     100% {
+        visibility: visible;
+        height: 100%;
         transform: scaleY(1);
+    }
+}
+
+.hide-in {
+    animation: hide-in 300ms forwards;
+    transform-origin: top center;
+}
+
+@keyframes hide-in {
+    0% {
+        visibility: visible;
+        height: 100%;
+        transform: scaleY(1);
+    }
+    98% {
+        visibility: visible;
+        height: 0;
+        transform: scaleY(0.05);
+    }
+    100% {
+        visibility: hidden;
+        height: 0;
+        transform: scaleY(0.05);
     }
 }

@@ -105,7 +105,7 @@ function MaintenanceBar(props) {
     }
 
     return (
-        <div className={`MaintenanceBar${props.new ? ' inserting' : ''}`} id={props.interval.id}>
+        <div className='MaintenanceBar' id={props.interval.id}>
             <div 
                 className="delete-button" 
                 title="Remove Interval"

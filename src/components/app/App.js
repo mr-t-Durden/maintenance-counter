@@ -16,12 +16,27 @@ const defaultIntervals = [
     currentValue: 0,
     totalValue: 300,
     active: true
+  },
+  {
+    id: uuidv4(),
+    name: 'Clean bicycle chain',
+    currentValue: 0,
+    totalValue: 900,
+    active: true
+  },
+  {
+    id: uuidv4(),
+    name: 'shop maintenance',
+    currentValue: 0,
+    totalValue: 2000,
+    active: true
   }
 ];
 
 function App() {
   const [intervals, setIntervals] = useState( () => {
     return Storage.loadIntervals() || defaultIntervals;
+    // return defaultIntervals;
   });
   const [progressChange, setProgressChange] = useState(0);
   const newIntervalKey = useRef(undefined);
@@ -64,11 +79,11 @@ function App() {
   }
 
   function removeInterval(intervalId) {
-    setIntervals(
-      intervals.filter(
+    setIntervals( (prevIntervals) => {
+      return prevIntervals.filter( 
         interval => interval.id !== intervalId
       )
-    );
+    });
   }
 
   function toggleActive(intervalId) {

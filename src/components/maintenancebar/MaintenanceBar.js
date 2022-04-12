@@ -28,7 +28,7 @@ function MaintenanceBar(props) {
             return interval.totalValue - interval.currentValue;
         }
         if (newProgressValue < 0) {
-            return interval.currentValue;
+            return -interval.currentValue;
         }
         return globalProgressChange;
     }

@@ -179,7 +179,10 @@ function App() {
         </div>
       </main>
       <footer>
-        <p>Impressum ...</p>
+        <p className='loveline'>Made with ❤️ in Germany</p>
+        <p>background image © <a href="https://www.freeimages.com/de/photographer/Marcl5-51783" target='_blank'>FreeImages.com/Marcl5</a></p>
+        <p>logo designed with © <a href="https://de.freelogodesign.org/" target='_blank'>FREE LOGO DESIGN</a></p>
+        <p>icons from © <a href="https://fontawesome.com/" target='_blank'>Font Awesome</a></p>
       </footer>
     </div>
   );

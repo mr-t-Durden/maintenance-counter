@@ -61,23 +61,6 @@ function App() {
       progress: undefined,
       });
 
-  function changeActiveIntervalsProgress(changeValue) {
-    setIntervals( 
-      intervals.map(
-        (interval) => {
-                if(interval.active) {
-                  if((interval.currentValue + changeValue) < 0){
-                    interval.currentValue = 0;
-                  } else {
-                    interval.currentValue += changeValue;
-                  }
-                }
-                return interval;  
-              }
-      )
-    );
-  }
-
   function removeInterval(intervalId) {
     setIntervals( (prevIntervals) => {
       return prevIntervals.filter( 
@@ -146,12 +129,29 @@ function App() {
   }, [intervals]);
 
   useEffect( () => {
+    function changeActiveIntervalsProgress(changeValue) {
+      setIntervals( 
+        intervals.map(
+          (interval) => {
+                  if(interval.active) {
+                    if((interval.currentValue + changeValue) < 0){
+                      interval.currentValue = 0;
+                    } else {
+                      interval.currentValue += changeValue;
+                    }
+                  }
+                  return interval;  
+                }
+        )
+      );
+    }
+
     const showChangeTimeout = setTimeout(() => {
       changeActiveIntervalsProgress(progressChange);
       setProgressChange(0);
     }, 3000)
     return () => clearTimeout(showChangeTimeout);
-  }, [progressChange]);
+  }, [progressChange, intervals]);
 
   return (
     <div className='box'>
@@ -180,9 +180,9 @@ function App() {
       </main>
       <footer>
         <p className='loveline'>Made with ❤️ in Germany</p>
-        <p>background image © <a href="https://www.freeimages.com/de/photographer/Marcl5-51783" target='_blank'>FreeImages.com/Marcl5</a></p>
-        <p>logo designed with © <a href="https://de.freelogodesign.org/" target='_blank'>FREE LOGO DESIGN</a></p>
-        <p>icons from © <a href="https://fontawesome.com/" target='_blank'>Font Awesome</a></p>
+        <p>background image © <a href="https://www.freeimages.com/de/photographer/Marcl5-51783" target='_blank' rel="noreferrer">FreeImages.com/Marcl5</a></p>
+        <p>logo designed with © <a href="https://de.freelogodesign.org/" target='_blank' rel="noreferrer">FREE LOGO DESIGN</a></p>
+        <p>icons from © <a href="https://fontawesome.com/" target='_blank' rel="noreferrer">Font Awesome</a></p>
       </footer>
     </div>
   );

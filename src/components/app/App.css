@@ -38,6 +38,7 @@ main {
 }
 
 footer {
+  color: #5b5b5b;
   font-size: 0.6rem;
   text-align: center;
   padding: 2vh;
@@ -46,7 +47,7 @@ footer {
 }
 
 footer a {
-  color: white;
+  color: #5b5b5b;
   text-decoration: none;
 }
 

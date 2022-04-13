@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/maintenance-counter/static/css/main.bf9d42ed.css",
+    "main.js": "/maintenance-counter/static/js/main.61b7c629.js",
+    "static/media/chain-on-dark-free-photos-1424424.jpg": "/maintenance-counter/static/media/chain-on-dark-free-photos-1424424.3b8313a2d052427f8fd7.jpg",
+    "index.html": "/maintenance-counter/index.html",
+    "main.bf9d42ed.css.map": "/maintenance-counter/static/css/main.bf9d42ed.css.map",
+    "main.61b7c629.js.map": "/maintenance-counter/static/js/main.61b7c629.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bf9d42ed.css",
+    "static/js/main.61b7c629.js"
+  ]
+}

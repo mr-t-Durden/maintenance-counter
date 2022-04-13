@@ -8,3 +8,4 @@ There is currently no server connection so the intervals progress will be saved 
 
 The web app was built with react and uses FontAwesome-Icons. Some of the animations uses the framer-motion library.
 
+[Maintenance Counter Web App](https://mr-t-durden.github.io/maintenance-counter/)
